@@ -1,0 +1,29 @@
+.toggleListIcon{
+  display: none;
+}
+
+.dump{
+  display: inline;
+}
+
+
+.listHeader{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+@media only screen and (max-width: 1109px) {
+
+  .toggleListIcon{
+    display: inline;
+  }
+
+  .dump{
+    display: none;
+  }
+
+
+
+}

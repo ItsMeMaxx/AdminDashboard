@@ -1,0 +1,48 @@
+<div class="container">
+  <app-nav-bar></app-nav-bar>
+
+  <div class="content">
+    <div class="listContainer">
+      <div class="listHeader">
+        <mat-icon *ngIf="hideNewEntries" class="toggleListIcon" (click)="toggleList(0)">expand_more</mat-icon>
+        <mat-icon *ngIf="!hideNewEntries" class="toggleListIcon" (click)="toggleList(0)">expand_less</mat-icon>
+        <h2>Gottesdiensteinträge</h2>
+        <div></div>
+      </div>
+
+      <div class="listContent" [class.hidden]="hideNewEntries">
+        <app-church-entry></app-church-entry>
+        <app-church-entry></app-church-entry>
+        <app-church-entry></app-church-entry>
+        <app-church-entry></app-church-entry>
+        <app-church-entry></app-church-entry>
+        <app-church-entry></app-church-entry>
+        <app-church-entry></app-church-entry>
+        <app-church-entry></app-church-entry>
+        <app-church-entry></app-church-entry>
+        <app-church-entry></app-church-entry>
+        <app-church-entry></app-church-entry>
+        <app-church-entry></app-church-entry>
+      </div>
+
+    </div>
+
+    <div class="listContainer">
+
+      <div class="listHeader">
+        <mat-icon *ngIf="hideCancellations" class="toggleListIcon" (click)="toggleList(1)">expand_more</mat-icon>
+        <mat-icon *ngIf="!hideCancellations" class="toggleListIcon" (click)="toggleList(1)">expand_less</mat-icon>
+        <h2>Absagen</h2>
+        <div></div>
+      </div>
+
+
+      <div class="listContent" [class.hidden]="hideCancellations">
+        <app-cancellation-item></app-cancellation-item>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>

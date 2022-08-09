@@ -1,0 +1,71 @@
+<div class="container">
+  <app-nav-bar></app-nav-bar>
+
+  <div class="content">
+    <div class="listContainer">
+      <div class="listHeader">
+        <div class="dump"></div>
+        <mat-icon *ngIf="hideNews" class="toggleListIcon" (click)="toggleList(0)">expand_more</mat-icon>
+        <mat-icon *ngIf="!hideNews" class="toggleListIcon" (click)="toggleList(0)">expand_less</mat-icon>
+        <h2>Neuigkeiten</h2>
+        <mat-icon (click)="showNewsModal = true">add</mat-icon>
+      </div>
+
+
+      <div class="listContent" [class.hidden]="hideNews">
+        <app-news-list-item></app-news-list-item>
+      </div>
+
+      <app-modal action="create" type="news" (closeModal)="showNewsModal = false" *ngIf="showNewsModal"></app-modal>
+
+    </div>
+
+
+    <div class="listContainer">
+      <div class="listHeader">
+        <div class="dump"></div>
+        <mat-icon *ngIf="hideChurchService" class="toggleListIcon" (click)="toggleList(1)">expand_more</mat-icon>
+        <mat-icon *ngIf="!hideChurchService" class="toggleListIcon" (click)="toggleList(1)">expand_less</mat-icon>
+        <h2>Gottesdienste</h2>
+        <mat-icon (click)="showChurchServiceModal = true">add</mat-icon>
+      </div>
+      <div class="listContent" [class.hidden]="hideChurchService">
+        <app-list-item></app-list-item>
+        <app-list-item></app-list-item>
+        <app-list-item></app-list-item>
+        <app-list-item></app-list-item>
+        <app-list-item></app-list-item>
+        <app-list-item></app-list-item>
+        <app-list-item></app-list-item>
+        <app-list-item></app-list-item>
+        <app-list-item></app-list-item>
+        <app-list-item></app-list-item>
+        <app-list-item></app-list-item>
+        <app-list-item></app-list-item>
+        <app-list-item></app-list-item>
+        <app-list-item></app-list-item>
+      </div>
+
+      <app-modal (closeModal)="showChurchServiceModal = false" *ngIf="showChurchServiceModal"></app-modal>
+
+    </div>
+
+    <div class="listContainer">
+      <div class="listHeader">
+        <div class="dump"></div>
+        <mat-icon *ngIf="hideLessons" class="toggleListIcon" (click)="toggleList(2)">expand_more</mat-icon>
+        <mat-icon *ngIf="!hideLessons" class="toggleListIcon" (click)="toggleList(2)">expand_less</mat-icon>
+        <h2>Unterrichtsstunden</h2>
+        <mat-icon (click)="showLessonModal = true">add</mat-icon>
+      </div>
+
+      <div class="listContent" [class.hidden]="hideLessons">
+        <app-lesson-item></app-lesson-item>
+      </div>
+
+    </div>
+
+    <app-modal (closeModal)="showLessonModal = false" *ngIf="showLessonModal"></app-modal>
+  </div>
+
+</div>

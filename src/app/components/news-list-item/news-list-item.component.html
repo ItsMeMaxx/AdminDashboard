@@ -1,0 +1,11 @@
+<div class="newsItem">
+  <mat-icon (click)="this.showModal = true">more_horiz</mat-icon>
+  <img class="newsImg" src="https://www.kirche-kissenbrueck-biewende.de/typo3temp/assets/_processed_/d/e/csm_Bild1_7cd984450b.jpg" alt="newsImg">
+  <div class="newsContent">
+    <h4>Headline</h4>
+    <p>Subheadline</p>
+    <p>THis sist aw awd akdaowdawdio awdoniawdaw</p>
+  </div>
+
+  <app-modal type="news" action="update" (closeModal)="this.showModal = false" *ngIf="showModal"></app-modal>
+</div>

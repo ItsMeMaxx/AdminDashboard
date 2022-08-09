@@ -1,0 +1,21 @@
+.listItem{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 15px;
+  margin: 15px;
+  padding: 10px;
+  background-color: var(--main-white);
+}
+.name{
+  font-size: 20px;
+}
+
+.reason{
+  font-size: 18px;
+}
+
+button{
+  align-self: center;
+  width: 50%;
+}

@@ -1,0 +1,78 @@
+<div class="modal" >
+
+  <div class="modalContent" *ngIf="(type === 'event' || type === 'lesson')">
+    <mat-icon class="close" (click)="closeModal.emit(false)">close</mat-icon>
+    <h2 *ngIf="action ==='update'">Bearbeiten</h2>
+    <h2 *ngIf="action ==='create'">Erstellen</h2>
+    <div class="modalForm">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input autocomplete="off" matInput [(ngModel)]="name">
+      </mat-form-field>
+      <h3>Gemeinde</h3>
+      <p>Dreifaltigkeitsgemeinde Kissenbrück-Biewende</p>
+      <mat-form-field appearance="fill" *ngIf="type === 'event'">
+        <mat-label>Kirche</mat-label>
+        <mat-select [(value)]="church">
+          <mat-option *ngFor="let church_place of churches" [value]="church_place.church">
+            {{church_place.church}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" *ngIf="type === 'lesson'">
+        <mat-label>Ort</mat-label>
+        <input autocomplete="off" matInput [(ngModel)]="place">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Datum auswählen</mat-label>
+        <input [min]="minDate" matInput [(ngModel)]="date" [matDatepicker]="picker">
+        <mat-hint>DD/MM/JJJJ</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Uhrzeit</mat-label>
+        <input matInput type="time" [(ngModel)]="time">
+      </mat-form-field>
+
+      <button *ngIf="action ==='update'" mat-raised-button color="primary" (click)="update()">Update</button>
+      <button *ngIf="action ==='create'" mat-raised-button color="primary" (click)="create()">Erstellen</button>
+
+    </div>
+  </div>
+
+  <div class="modalContent" *ngIf="type === 'news'">
+    <mat-icon class="close" (click)="closeModal.emit(false)">close</mat-icon>
+    <h2 *ngIf="action ==='update'">Bearbeiten</h2>
+    <h2 *ngIf="action ==='create'">Erstellen</h2>
+    <div class="modalForm">
+      <img *ngIf="action=== 'update'" src="" alt="img">
+      <mat-form-field appearance="fill">
+        <mat-label>Überschrift</mat-label>
+        <input autocomplete="off" matInput [(ngModel)]="headline">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Zweite Überschrift</mat-label>
+        <input autocomplete="off" matInput [(ngModel)]="subHeadline">
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Text</mat-label>
+        <textarea rows="10" matInput [(ngModel)]="text"></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Bild Pfad</mat-label>
+        <input autocomplete="off" matInput [(ngModel)]="imgPath">
+      </mat-form-field>
+      <small>Der Pfad kann von der offiziellen Seite mit einem Rechtsklick auf das Bild kopiert werden</small>
+
+      <button *ngIf="action ==='update'" mat-raised-button color="primary" (click)="update()">Update</button>
+      <button *ngIf="action ==='create'" mat-raised-button color="primary" (click)="update()">Erstellen</button>
+
+    </div>
+  </div>
+
+  <div class="dump" (click)="closeModal.emit(false)"></div>
+
+</div>

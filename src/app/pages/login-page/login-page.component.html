@@ -1,0 +1,27 @@
+<div class="singleContentContainer">
+  <div class="formContainer">
+    <h2>Login</h2>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Benutername</mat-label>
+      <input [(ngModel)]="userName" matInput type="text">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Passwort</mat-label>
+      <input [(ngModel)]="password" matInput [type]="passwordInputType">
+      <button matSuffix mat-icon-button aria-label="TogglePassword" (click)="togglePassword()">
+        <mat-icon *ngIf="!hidePassword">visibility</mat-icon>
+        <mat-icon *ngIf="hidePassword">visibility_off</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <p *ngIf="emptyInput">Bitte gib einen Benutzernamen und Passwort ein</p>
+    <p *ngIf="errorLogin">Es gab einen Fehler beim Login!<br>Bitte probier es zu einem späteren Zeitpunk erneut</p>
+    <p *ngIf="wrongCombination">Die Kombination aus Benutzer und Passwort existiert nicht!</p>
+
+    <button mat-raised-button color="primary" (click)="login()">Login</button>
+
+  </div>
+
+</div>
