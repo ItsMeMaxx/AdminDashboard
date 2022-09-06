@@ -1,0 +1,27 @@
+.toDoListHeader{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.task{
+  text-align: left;
+  display: flex;
+  margin: 5px;
+  justify-content: space-between ;
+}
+
+.task mat-form-field{
+  flex-grow: 4;
+}
+
+small{
+  margin: -15px 0 15px 0;
+}
+
+.footer{
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}

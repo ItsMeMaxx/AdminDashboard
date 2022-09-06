@@ -4,16 +4,15 @@
     <div class="listItemHeader">
       <small>Gottesdienst</small>
     </div>
-    <p class="title">Name Gottesdienst</p>
-    <p class="preacherName">Frau Schwertfeger</p>
+    <p class="title">{{churchEntry.title}}</p>
+    <p class="preacherName">{{churchEntry.pastor}}</p>
     <div class="infoContainer">
       <mat-icon>event</mat-icon>
-      <p>09.12.1994</p>
-      <p>10:00 Uhr</p>
+      <p>{{churchEntry.time.toDate()| timestampToDatePipe }}</p>
     </div>
     <div class="infoContainer">
       <mat-icon>pin_drop</mat-icon>
-      <p>Kissenbrück</p>
+      <p>{{churchEntry.church}}</p>
     </div>
     <div class="buttonBar">
       <button mat-raised-button color="warn" (click)="deny()">Ablehen</button>

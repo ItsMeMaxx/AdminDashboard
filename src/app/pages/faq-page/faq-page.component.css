@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   max-width: 50%;
-  max-height: 75vh;
+  max-height: 45vh;
 }
 
 .inputContainer button{
@@ -14,6 +14,9 @@
   align-self: flex-end;
 }
 
+.listContainer{
+  max-height: 45vh;
+}
 
 .toggleListIcon{
   display: none;
@@ -32,6 +35,11 @@
 
 
 @media only screen and (max-width: 1109px) {
+
+  .listContainer{
+    max-height: none;
+  }
+
 
   .toggleListIcon{
     display: inline;

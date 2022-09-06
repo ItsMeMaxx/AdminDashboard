@@ -12,7 +12,7 @@ export class LoginPageComponent implements OnInit {
   passwordInputType: string = 'password';
   hidePassword: boolean = true;
 
-  userName:string = '';
+  email:string = '';
   password: string = '';
 
   errorLogin:boolean = false;
@@ -30,15 +30,17 @@ export class LoginPageComponent implements OnInit {
   }
 
   login() {
-    if(!(this.userName && this.password)){
+    if(!(this.email && this.password)){
       this.emptyInput = true
       return
     }
-    if(!this.auth.login(this.userName, this.password)){
-      this.wrongCombination = !this.wrongCombination
-      return
+    if(this.email !== 'admin@admin.de'){
+      this.wrongCombination = true
+      return;
     }
-
-    this.router.navigateByUrl('/home')
+    this.auth.login(this.email, this.password).catch((error)=>{
+      console.log(error)
+      this.wrongCombination = true
+    })
   }
 }

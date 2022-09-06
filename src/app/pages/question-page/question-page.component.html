@@ -1,0 +1,24 @@
+<div class="container">
+  <app-nav-bar></app-nav-bar>
+
+  <div class="content">
+    <div class="listContainer">
+      <div class="listHeader">
+        <h2>Fragen</h2>
+      </div>
+
+      <ng-container *ngIf="questions | async as questions">
+        <div class="listContent">
+          <app-question-item [question]="question" *ngFor="let question of questions"></app-question-item>
+        </div>
+      </ng-container>
+
+
+    </div>
+
+
+  </div>
+
+</div>
+
+

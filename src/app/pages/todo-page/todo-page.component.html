@@ -1,0 +1,36 @@
+<div class="container">
+  <app-nav-bar></app-nav-bar>
+
+  <div class="inputContainer">
+    <mat-form-field appearance="fill">
+      <mat-label>Event Name</mat-label>
+      <input autocomplete="off" matInput [(ngModel)]="eventName">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Task Name</mat-label>
+      <input autocomplete="off" matInput [(ngModel)]="taskName">
+    </mat-form-field>
+    <button mat-raised-button (click)="addTaskToList()">Task hinzufügen</button>
+    <h3>ToDos</h3>
+    <div *ngFor="let task of tasks; let i = index" class="task">
+      <p>{{task.name}}</p>
+      <mat-icon (click)="deleteTaskFromList(i)">delete</mat-icon>
+    </div>
+
+    <button mat-raised-button color="primary" (click)="createList()">Erstellen</button>
+  </div>
+
+  <div class="toDoLists">
+    <div>
+      <div class="listHeader">
+        <h2>To-Do Listen</h2>
+      </div>
+
+      <ng-container *ngIf="toDoLists | async as toDoLists">
+        <div class="listContent">
+          <app-to-do-list-item class="listContainer" [toDoList]="todoList" *ngFor="let todoList of toDoLists"></app-to-do-list-item>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

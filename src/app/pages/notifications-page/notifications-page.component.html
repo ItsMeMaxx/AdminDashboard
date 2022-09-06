@@ -1,0 +1,45 @@
+<div class="container">
+  <app-nav-bar></app-nav-bar>
+
+  <div class="inputContainer">
+    <mat-form-field appearance="fill">
+      <mat-label>Mitteilungen</mat-label>
+      <input autocomplete="off" matInput [(ngModel)]="notification">
+      <mat-hint *ngIf="error">Bitte angeben</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Sichtbar bis</mat-label>
+      <input [min]="minDate" matInput [(ngModel)]="deletedAt" [matDatepicker]="picker">
+      <mat-hint>DD/MM/JJJJ</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <label for="confirmandOnly">Gruppe</label>
+    <mat-radio-group id="confirmandOnly" aria-label="Nur für Konfirmanden" [(ngModel)]="group">
+      <mat-radio-button class="example-radio-button" *ngFor="let group of groups" [value]="group">
+        {{group}}
+      </mat-radio-button>
+    </mat-radio-group>
+    <button mat-raised-button color="primary" (click)="createNotification()">Erstellen</button>
+  </div>
+
+  <div class="content">
+    <div class="listContainer">
+      <div class="listHeader">
+        <h2>Mitteilungen</h2>
+      </div>
+
+      <ng-container *ngIf="notifications | async as notifications">
+        <div class="listContent">
+          <app-noticication-item [notification]="notification" *ngFor="let notification of notifications"></app-noticication-item>
+        </div>
+      </ng-container>
+
+
+    </div>
+
+
+  </div>
+
+</div>
+

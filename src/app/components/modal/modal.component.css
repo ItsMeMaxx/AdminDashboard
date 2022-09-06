@@ -13,6 +13,10 @@
   background-color: rgba(0,0,0,0.4);
 }
 
+img{
+  width: 150px;
+}
+
 
 .dump{
   height: 100%;
@@ -23,7 +27,6 @@
   padding: 20px;
   border: 1px solid #888;
   z-index: 4;
-  text-align: center;
 }
 
 .close {
@@ -59,5 +62,13 @@ small{
 }
 
 button{
+  margin-bottom: 35px;
   width: 80%;
+}
+
+.error{
+  width: 80%;
+  margin: -40px 25px 25px;
+  text-align: left;
+  color: #c94d4d;
 }

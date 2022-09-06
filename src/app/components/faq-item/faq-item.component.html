@@ -1,0 +1,22 @@
+<div class="listItem">
+  <div class="colorBar"></div>
+  <div class="listItemContent">
+    <div class="listItemHeader">
+      <mat-icon (click)="this.edit = !this.edit" >more_horiz</mat-icon>
+      <div class="buttonBar" *ngIf="edit">
+        <button  mat-raised-button color="warn" (click)="delete()">Löschen</button>
+        <button  mat-raised-button color="primary" (click)="save()">Speichern</button>
+      </div>
+    </div>
+    <p style="font-weight: bold" *ngIf="!this.edit">{{faq.question}}</p>
+    <p *ngIf="!this.edit">{{faq.answer}}</p>
+    <mat-form-field appearance="fill" *ngIf="this.edit">
+      <mat-label>Frage</mat-label>
+      <input [(ngModel)]="faq.question" matInput type="text">
+    </mat-form-field>
+    <mat-form-field appearance="fill" *ngIf="this.edit">
+      <mat-label>Antwort</mat-label>
+      <textarea rows="4" [(ngModel)]="faq.answer" matInput type="text"></textarea>
+    </mat-form-field>
+  </div>
+</div>

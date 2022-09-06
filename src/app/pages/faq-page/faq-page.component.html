@@ -18,36 +18,42 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="primary">Erstellen</button>
+    <button mat-raised-button color="primary" (click)="createFaq()">Erstellen</button>
   </div>
 
   <div class="content">
 
     <div class="listContainer">
       <div class="listHeader">
-        <mat-icon *ngIf="hideNewEntries" class="toggleListIcon" (click)="toggleList(0)">expand_more</mat-icon>
-        <mat-icon *ngIf="!hideNewEntries" class="toggleListIcon" (click)="toggleList(0)">expand_less</mat-icon>
+        <mat-icon *ngIf="hideAllList" class="toggleListIcon" (click)="hideAllList = false;hideConfirmandList = true">expand_more</mat-icon>
+        <mat-icon *ngIf="!hideAllList" class="toggleListIcon" (click)="hideAllList = true;">expand_less</mat-icon>
         <h2>Alle</h2>
         <div></div>
       </div>
 
-      <div class="listContent" [class.hidden]="hideNewEntries">
+      <ng-container *ngIf="faqsAll | async as faqsAll">
+        <div class="listContent" [class.hidden]="hideAllList">
+          <app-faq-item [faq]="faq" *ngFor="let faq of faqsAll"></app-faq-item>
+        </div>
+      </ng-container>
 
-      </div>
 
     </div>
 
     <div class="listContainer">
       <div class="listHeader">
-        <mat-icon *ngIf="hideNewEntries" class="toggleListIcon" (click)="toggleList(0)">expand_more</mat-icon>
-        <mat-icon *ngIf="!hideNewEntries" class="toggleListIcon" (click)="toggleList(0)">expand_less</mat-icon>
+        <mat-icon *ngIf="hideConfirmandList" class="toggleListIcon" (click)="hideConfirmandList = false; hideAllList = true">expand_more</mat-icon>
+        <mat-icon *ngIf="!hideConfirmandList" class="toggleListIcon" (click)="hideConfirmandList = true; ">expand_less</mat-icon>
         <h2>Konfirmanden</h2>
         <div></div>
       </div>
 
-      <div class="listContent" [class.hidden]="hideNewEntries">
+      <ng-container *ngIf="faqsConfirmands | async as faqsConfirmands">
+        <div class="listContent" [class.hidden]="hideConfirmandList" >
+          <app-faq-item [faq]="faq" *ngFor="let faq of faqsConfirmands"></app-faq-item>
+        </div>
+      </ng-container>
 
-      </div>
 
     </div>
 

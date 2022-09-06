@@ -10,20 +10,12 @@
         <div></div>
       </div>
 
-      <div class="listContent" [class.hidden]="hideNewEntries">
-        <app-church-entry></app-church-entry>
-        <app-church-entry></app-church-entry>
-        <app-church-entry></app-church-entry>
-        <app-church-entry></app-church-entry>
-        <app-church-entry></app-church-entry>
-        <app-church-entry></app-church-entry>
-        <app-church-entry></app-church-entry>
-        <app-church-entry></app-church-entry>
-        <app-church-entry></app-church-entry>
-        <app-church-entry></app-church-entry>
-        <app-church-entry></app-church-entry>
-        <app-church-entry></app-church-entry>
-      </div>
+      <ng-container *ngIf="churchEntries | async as churchEntries">
+        <div class="listContent" [class.hidden]="hideNewEntries">
+          <app-church-entry [churchEntry]="churchEntry" *ngFor="let churchEntry of churchEntries"></app-church-entry>
+        </div>
+      </ng-container>
+
 
     </div>
 
@@ -36,13 +28,13 @@
         <div></div>
       </div>
 
-
-      <div class="listContent" [class.hidden]="hideCancellations">
-        <app-cancellation-item></app-cancellation-item>
-      </div>
+      <ng-container *ngIf="cancellations | async as cancellations">
+        <div class="listContent" [class.hidden]="hideCancellations">
+          <app-cancellation-item [cancellation]="cancellation" *ngFor="let cancellation of cancellations"></app-cancellation-item>
+        </div>
+      </ng-container>
 
     </div>
-
 
   </div>
 </div>

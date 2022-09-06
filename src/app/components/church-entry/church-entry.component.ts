@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {ChurchEntryModel} from "../../models/churchEntry.model";
+import {FirestoreService} from "../../services/firestoreService";
 
 @Component({
   selector: 'app-church-entry',
@@ -7,16 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChurchEntryComponent implements OnInit {
 
-  constructor() { }
+  @Input() churchEntry! : ChurchEntryModel
+
+  constructor(private firestoreService: FirestoreService) { }
 
   ngOnInit(): void {
   }
 
-  accept() {
-
+  accept(): void {
+    this.firestoreService.deleteData('churchServices', this.churchEntry.id )
+    this.firestoreService.updateDeepData('users', 'churchServices', {status : "accepted"}, this.churchEntry.userId, this.churchEntry.serviceId)
   }
 
-  deny() {
-
+  deny():void {
+    this.firestoreService.deleteData('churchServices', this.churchEntry.id )
+    this.firestoreService.updateDeepData('users', 'churchServices', {status : "denied"}, this.churchEntry.userId, this.churchEntry.serviceId)
   }
 }

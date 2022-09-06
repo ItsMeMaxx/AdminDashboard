@@ -1,0 +1,30 @@
+<div class="toDoListContainer">
+  <div class="toDoListHeader">
+    <div *ngIf="!edit"></div>
+    <mat-icon *ngIf="edit" (click)="deleteList()">delete</mat-icon>
+    <h2 *ngIf="!edit" class="toDoListHeadline">{{toDoList.listName}}</h2>
+    <mat-form-field appearance="fill" *ngIf="edit">
+      <mat-label>Event Name</mat-label>
+      <input autocomplete="off" matInput [(ngModel)]="toDoList.listName">
+    </mat-form-field>
+    <mat-icon *ngIf="!edit" (click)="edit = true">more_horiz</mat-icon>
+    <mat-icon *ngIf="edit" (click)="edit = false">close</mat-icon>
+  </div>
+  <div *ngFor="let task of toDoList.Tasks; let i = index" class="task">
+    <p *ngIf="!edit">{{task.name}}</p>
+    <mat-form-field appearance="fill" *ngIf="edit">
+      <input autocomplete="off" matInput [(ngModel)]="toDoList.Tasks[i].name">
+    </mat-form-field>
+    <mat-icon *ngIf="edit" (click)="deleteTaskFromList(i)">delete</mat-icon>
+  </div>
+  <div *ngIf="edit" class="footer">
+    <mat-form-field appearance="fill">
+      <mat-label>Neuer Task</mat-label>
+      <input autocomplete="off" matInput [(ngModel)]="taskName" (keyup.enter)="addNewTaskToList()">
+    </mat-form-field>
+    <small>Enter drücken zum Hinzufügen</small>
+    <button mat-raised-button color="primary" (click)="saveChanges()">Speichern</button>
+  </div>
+
+
+</div>

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {NewsEntryModel} from "../../models/newsEntry.model";
+import {FirestoreService} from "../../services/firestoreService";
 
 @Component({
   selector: 'app-news-list-item',
@@ -6,14 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./news-list-item.component.css']
 })
 export class NewsListItemComponent implements OnInit {
-  showModal: boolean = false;
 
-  constructor() { }
+  showModal: boolean = false;
+  @Input() newsEntry! : NewsEntryModel;
+
+  constructor(private firestoreService: FirestoreService) { }
 
   ngOnInit(): void {
   }
 
-  editNews() {
-
+  updateNews(data: NewsEntryModel):void{
+    this.firestoreService.updateData('news', data, data.id)
   }
+
+  deleteNews(data: string):void{
+    this.firestoreService.deleteData('news', data )
+  }
+
 }

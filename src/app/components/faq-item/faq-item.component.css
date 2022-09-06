@@ -1,0 +1,45 @@
+
+.listItem{
+  display: flex;
+  flex-direction: row;
+  border-radius: 15px;
+  margin: 15px;
+  padding: 10px;
+  background-color: var(--main-white);
+}
+
+.listItemHeader{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-bottom: 25px;
+
+}
+
+.buttonBar{
+  display: flex;
+  justify-content: space-between;
+  width: 35%;
+}
+
+.listItemHeader mat-icon{
+  cursor: pointer;
+}
+
+.listItemContent{
+  text-align: start;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.colorBar{
+  border-radius: 2px;
+  width: 5px;
+  background-color: var(--main-blue);
+  margin-right: 15px;
+}
+
+
+

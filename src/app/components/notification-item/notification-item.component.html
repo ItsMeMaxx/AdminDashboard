@@ -1,0 +1,31 @@
+<div class="listItem">
+  <div class="colorBar"></div>
+  <div class="listItemContent">
+    <div class="listItemHeader">
+      <mat-icon (click)="edit = !edit" >more_horiz</mat-icon>
+      <div class="buttonBar" *ngIf="edit">
+        <button  mat-raised-button color="warn" (click)="delete()">Löschen</button>
+        <button  mat-raised-button color="primary" (click)="save()">Speichern</button>
+      </div>
+    </div>
+    <p style="font-weight: bold" *ngIf="!edit">{{notification.title}}</p>
+    <p *ngIf="!edit">{{notification.group}}</p>
+    <p *ngIf="!edit">Wird gelöscht am: {{notification.delete_at.toDate()| timestampToDatePipe }}</p>
+    <mat-form-field appearance="fill" *ngIf="edit">
+      <mat-label>Frage</mat-label>
+      <input [(ngModel)]="notification.title" matInput type="text">
+    </mat-form-field>
+    <mat-radio-group *ngIf="edit" id="confirmandOnly" aria-label="Nur für Konfirmanden" [(ngModel)]="notification.group">
+      <mat-radio-button class="example-radio-button" *ngFor="let group of groups" [value]="group">
+        {{group}}
+      </mat-radio-button>
+    </mat-radio-group>
+    <mat-form-field appearance="fill" *ngIf="edit">
+      <mat-label>Sichtbar bis</mat-label>
+      <input [min]="minDate" matInput [(ngModel)]="notification.delete_at" [matDatepicker]="picker">
+      <mat-hint>DD/MM/JJJJ</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+</div>

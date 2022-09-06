@@ -1,0 +1,71 @@
+
+.inputContainer {
+  padding: 10px;
+  margin: 25px;
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  max-height: 45vh;
+}
+
+.inputContainer mat-radio-button{
+  margin-right: 25px;
+  margin-top: 8px;
+  margin-bottom: 15px;
+}
+
+.inputContainer button{
+  width: 50%;
+  align-self: flex-end;
+}
+
+.inputContainer label{
+  margin-top: 25px;
+}
+
+.listContainer{
+  max-height: 45vh;
+}
+
+.toggleListIcon{
+  display: none;
+}
+
+.dump{
+  display: inline;
+}
+
+
+.listHeader{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+
+@media only screen and (max-width: 700px) {
+
+  .listContainer{
+    max-height: none;
+  }
+
+
+  .listHeader{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+
+  .inputContainer {
+    padding: 10px;
+    margin: 25px;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    max-width: 100%;
+    max-height: 75vh;
+  }
+
+
+}

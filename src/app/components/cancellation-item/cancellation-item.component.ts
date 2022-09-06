@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {FirestoreService} from "../../services/firestoreService";
+import {CancellationModel} from "../../models/cancellation.model";
 
 @Component({
   selector: 'app-cancellation-item',
@@ -7,12 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CancellationItemComponent implements OnInit {
 
-  constructor() { }
+  @Input() cancellation!: CancellationModel;
+
+  constructor(private firestoreService: FirestoreService) { }
 
   ngOnInit(): void {
   }
 
-  accept() {
-
+  accept():void {
+    this.firestoreService.deleteData("callOffs", this.cancellation.id)
   }
 }

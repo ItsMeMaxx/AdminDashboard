@@ -1,0 +1,11 @@
+<div class="listItem">
+  <div class="colorBar"></div>
+  <div class="listItemContent">
+    <p style="font-weight: bold">{{question.question}}</p>
+    <mat-form-field appearance="fill">
+      <mat-label>Antwort</mat-label>
+      <textarea rows="4" [(ngModel)]="answer" matInput type="text"></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="save()">Antworten</button>
+  </div>
+</div>

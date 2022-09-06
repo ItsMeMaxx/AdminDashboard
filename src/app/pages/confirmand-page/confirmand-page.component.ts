@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {FirestoreService} from "../../services/firestoreService";
+import {AngularFirestore} from "@angular/fire/compat/firestore";
+import {BehaviorSubject} from "rxjs";
+
 
 @Component({
   selector: 'app-confirmand-page',
@@ -9,10 +13,21 @@ export class ConfirmandPageComponent implements OnInit {
   hideNewEntries: boolean = true;
   hideCancellations: boolean = true;
 
-  constructor() {
+
+  cancellations: BehaviorSubject<any> = new BehaviorSubject([])
+  churchEntries: BehaviorSubject<any> = new BehaviorSubject([])
+
+  constructor(private angularFirestore: AngularFirestore,private firestoreService: FirestoreService) {
   }
 
   ngOnInit(): void {
+    this.firestoreService.getDataFromDatabaseAsStream('churchServices', {field: 'time', orderBy: 'desc'}).subscribe(docs => {
+      this.churchEntries.next(docs)
+    })
+    this.firestoreService.getDataFromDatabaseAsStream('callOffs').subscribe(docs => {
+      this.cancellations.next(docs)
+    })
+
   }
 
   toggleList(index: number) {

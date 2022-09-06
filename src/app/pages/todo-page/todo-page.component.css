@@ -1,0 +1,94 @@
+
+.inputContainer {
+  text-align: left;
+  padding: 10px;
+  margin: 25px;
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  max-height: 45vh;
+}
+
+.inputContainer button:first-of-type{
+  width: 30%;
+}
+
+.inputContainer button{
+  width: 50%;
+  align-self: flex-end;
+}
+
+.listContainer{
+  width: 27%;
+}
+
+.listHeader{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.toDoLists{
+  margin-top: 55px;
+  overflow: auto;
+}
+
+.listContent{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-height: 50vh;
+}
+
+.task{
+  padding: 10px;
+  margin: 0 0 15px 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  background-color: var(--main-bg-iosWhite);
+  border-radius: 5px;
+}
+
+.task p {
+  margin: 0;
+  font-size: 18px;
+}
+
+
+@media only screen and (max-width: 1109px) {
+
+  .listContainer{
+    max-height: none;
+  }
+
+  .listContainer{
+    width: 40%;
+  }
+
+
+  .inputContainer {
+    text-align: center;
+    padding: 10px;
+    margin: 25px;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    max-width: 100%;
+    max-height: 75vh;
+  }
+
+
+}
+
+
+@media only screen and (max-width: 712px) {
+
+
+  .listContainer{
+    width: 90%;
+  }
+
+
+
+}

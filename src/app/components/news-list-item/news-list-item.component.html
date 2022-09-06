@@ -1,11 +1,12 @@
 <div class="newsItem">
   <mat-icon (click)="this.showModal = true">more_horiz</mat-icon>
-  <img class="newsImg" src="https://www.kirche-kissenbrueck-biewende.de/typo3temp/assets/_processed_/d/e/csm_Bild1_7cd984450b.jpg" alt="newsImg">
+  <img *ngIf="newsEntry.imgPath" class="newsImg" src="{{newsEntry.imgPath}}" alt="newsImg">
+  <div *ngIf="!newsEntry.imgPath" class="noImgContainer"></div>
   <div class="newsContent">
-    <h4>Headline</h4>
-    <p>Subheadline</p>
-    <p>THis sist aw awd akdaowdawdio awdoniawdaw</p>
+    <h4>{{newsEntry.title}}</h4>
+    <p>{{newsEntry.subTitle}}</p>
+    <p>{{newsEntry.text}}</p>
   </div>
 
-  <app-modal type="news" action="update" (closeModal)="this.showModal = false" *ngIf="showModal"></app-modal>
+  <app-modal (deleteNews)="deleteNews($event)" (updateNews)="updateNews($event)" [news]="newsEntry" type="news" action="update" (closeModal)="this.showModal = false" *ngIf="showModal"></app-modal>
 </div>

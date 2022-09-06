@@ -9,6 +9,11 @@
         <mat-label>Name</mat-label>
         <input autocomplete="off" matInput [(ngModel)]="name">
       </mat-form-field>
+      <div class="error" *ngIf="error">
+        <small>
+          Bitte Namen eingeben!
+        </small>
+      </div>
       <h3>Gemeinde</h3>
       <p>Dreifaltigkeitsgemeinde Kissenbrück-Biewende</p>
       <mat-form-field appearance="fill" *ngIf="type === 'event'">
@@ -19,6 +24,11 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <div class="error" *ngIf="error">
+        <small>
+          Bitte Kirche auswählen!
+        </small>
+      </div>
       <mat-form-field appearance="fill" *ngIf="type === 'lesson'">
         <mat-label>Ort</mat-label>
         <input autocomplete="off" matInput [(ngModel)]="place">
@@ -32,12 +42,23 @@
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>Uhrzeit</mat-label>
+        <mat-label>Start</mat-label>
         <input matInput type="time" [(ngModel)]="time">
       </mat-form-field>
+      <mat-form-field appearance="fill" *ngIf="type === 'lesson'">
+        <mat-label>Ende</mat-label>
+        <input matInput type="time" [(ngModel)]="end">
+      </mat-form-field>
+      <div class="error" *ngIf="error">
+        <small>
+          Bitte Uhrzeit auswählen!
+        </small>
+      </div>
+
 
       <button *ngIf="action ==='update'" mat-raised-button color="primary" (click)="update()">Update</button>
       <button *ngIf="action ==='create'" mat-raised-button color="primary" (click)="create()">Erstellen</button>
+      <button *ngIf="action ==='update'" mat-raised-button color="accent" (click)="delete()">Löschen</button>
 
     </div>
   </div>
@@ -47,7 +68,7 @@
     <h2 *ngIf="action ==='update'">Bearbeiten</h2>
     <h2 *ngIf="action ==='create'">Erstellen</h2>
     <div class="modalForm">
-      <img *ngIf="action=== 'update'" src="" alt="img">
+      <img *ngIf="action=== 'update' && imgPath" src="{{imgPath}}" alt="img">
       <mat-form-field appearance="fill">
         <mat-label>Überschrift</mat-label>
         <input autocomplete="off" matInput [(ngModel)]="headline">
@@ -68,7 +89,8 @@
       <small>Der Pfad kann von der offiziellen Seite mit einem Rechtsklick auf das Bild kopiert werden</small>
 
       <button *ngIf="action ==='update'" mat-raised-button color="primary" (click)="update()">Update</button>
-      <button *ngIf="action ==='create'" mat-raised-button color="primary" (click)="update()">Erstellen</button>
+      <button *ngIf="action ==='create'" mat-raised-button color="primary" (click)="create()">Erstellen</button>
+      <button *ngIf="action ==='update'" mat-raised-button color="accent" (click)="delete()">Löschen</button>
 
     </div>
   </div>

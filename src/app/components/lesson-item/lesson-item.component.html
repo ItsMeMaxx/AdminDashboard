@@ -5,18 +5,18 @@
       <small>Gottesdienst</small>
       <mat-icon (click)="this.showModal = true" >more_horiz</mat-icon>
     </div>
-    <p class="title">Name Gottesdienst</p>
+    <p class="title">{{lesson.title}}</p>
     <div class="infoContainer">
       <mat-icon>event</mat-icon>
-      <p>09.12.1994</p>
-      <p>10:00 Uhr</p>
+      <p>{{lesson.date.toDate()| timestampToDatePipe }}</p>
+      <p>{{lesson.end.toDate()| timestampToDatePipe }}</p>
     </div>
     <div class="infoContainer">
       <mat-icon>pin_drop</mat-icon>
-      <p>Kissenbrück</p>
+      <p>{{lesson.place}}</p>
     </div>
   </div>
 
-  <app-modal type="lesson" action="update" (closeModal)="this.showModal = false" *ngIf="showModal"></app-modal>
+  <app-modal (deleteLesson)="deleteLesson($event)" (updateLesson)="updateLesson($event)" type="lesson" action="update" [lesson]="lesson" (closeModal)="this.showModal = false" *ngIf="showModal"></app-modal>
 
 </div>
