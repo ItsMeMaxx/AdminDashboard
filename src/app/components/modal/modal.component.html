@@ -29,6 +29,11 @@
           Bitte Kirche auswählen!
         </small>
       </div>
+      <mat-form-field appearance="fill" *ngIf="type === 'event'">
+        <mat-label>Ort</mat-label>
+        <input autocomplete="off" matInput [(ngModel)]="church">
+      </mat-form-field>
+      <small *ngIf="type === 'event'">Es kann entweder ein Ort oder eine Kirche ausgewählt werden! Beides ist nicht möglich!</small>
       <mat-form-field appearance="fill" *ngIf="type === 'lesson'">
         <mat-label>Ort</mat-label>
         <input autocomplete="off" matInput [(ngModel)]="place">
